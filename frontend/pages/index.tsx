@@ -3,6 +3,7 @@ import { getSession, signIn, signOut } from 'next-auth/client'
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
+import Home from '../componnents/scenes/Home'
 
 const IndexPage = ({ session }: { session: Session }) => {
   const signInButtonNode = () => {
@@ -48,15 +49,7 @@ const IndexPage = ({ session }: { session: Session }) => {
   }
 
   if (!session) {
-    return (
-      <div className="hero">
-        <div className="navbar">
-          {signOutButtonNode()}
-          {signInButtonNode()}
-        </div>
-        <div className="text">{`You aren't authorized to view this page`}</div>
-      </div>
-    )
+    return <Home />
   }
 
   return (
